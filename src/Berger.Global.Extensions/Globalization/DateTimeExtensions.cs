@@ -4,41 +4,41 @@ namespace Berger.Global.Extensions.Globalization
 {
     public static class DateTimeExtensions
     {
-        public static string ConvertUtc(this DateTime data, string zone = "Pacific Standard Time")
+        public static string ConvertUtc(this DateTime date, string zone = "Pacific Standard Time")
         {
-            var timeZone = ReturnTimeZone(zone);
+            var timeZone = GetTimeZone(zone);
 
-            return data.ConvertUtc(timeZone);
+            return date.ConvertUtc(timeZone);
         }
 
-        public static string ConvertUtc(this DateTime ? data, string zona = "Pacific Standard Time")
+        public static string ConvertUtc(this DateTime ? date, string zone = "Pacific Standard Time")
         {
-            var formatacao = Formatar(data);
-            var timeZone = ReturnTimeZone(zona);
+            var format = Format(date);
+            var timeZone = GetTimeZone(zone);
 
-            return formatacao.ConvertUtc(timeZone);
+            return format.ConvertUtc(timeZone);
         }
 
-        private static string ConvertUtc(this DateTime data, TimeZoneInfo zona)
+        private static string ConvertUtc(this DateTime date, TimeZoneInfo zone)
         {
-            if (data == DateTime.MinValue)
+            if (date == DateTime.MinValue)
                 return "Not informed";
             else
-                return TimeZoneInfo.ConvertTimeFromUtc(data, zona).ToString();
+                return TimeZoneInfo.ConvertTimeFromUtc(date, zone).ToString();
         }
 
-        private static DateTime Formatar(DateTime? data)
+        private static DateTime Format(DateTime? date)
         {
-            var formatacao = DateTime.MinValue;
+            var format = DateTime.MinValue;
 
-            if (data != null)
-                formatacao = (DateTime)data;
+            if (date != null)
+                format = (DateTime)date;
 
-            return formatacao;
+            return format;
         }
-        private static TimeZoneInfo ReturnTimeZone(string zona)
+        private static TimeZoneInfo GetTimeZone(string zone)
         {
-            return TimeZoneInfo.FindSystemTimeZoneById(zona);
+            return TimeZoneInfo.FindSystemTimeZoneById(zone);
         }
     }
 }

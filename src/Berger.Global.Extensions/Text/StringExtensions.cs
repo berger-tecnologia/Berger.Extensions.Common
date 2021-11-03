@@ -20,9 +20,7 @@ namespace Berger.Global.Extensions.Text
                 string output = "AAAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUuuuuCc";
 
                 for (int i = 0; i < input.Length; i++)
-                {
                     text = text.Replace(input[i].ToString(), output[i].ToString());
-                }
 
                 return text;
             }

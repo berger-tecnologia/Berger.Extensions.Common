@@ -249,7 +249,12 @@ namespace Berger.Global.Extensions.Phone
             dictionary.Add("ZM", "+260");
             dictionary.Add("ZW", "+263");
 
-            return string.Empty;
+            var country = string.Empty;
+
+            if (dictionary.TryGetValue(code, out country))
+                return string.Empty;
+
+            return country;
         }
     }
 }

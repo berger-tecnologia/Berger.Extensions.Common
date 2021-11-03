@@ -5,7 +5,7 @@ namespace Berger.Global.Extensions.Config
 {
     public static class ConfigExtensions
     {
-        public static IConfigurationBuilder ApplyConfig(this IConfiguration configuration, IHostEnvironment env)
+        public static IConfigurationBuilder SetConfig(this IConfiguration configuration, IHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                     .SetBasePath(env.ContentRootPath)
@@ -17,7 +17,7 @@ namespace Berger.Global.Extensions.Config
             return builder;
         }
 
-        public static IConfigurationBuilder ApplyConfig(this IConfiguration configuration)
+        public static IConfigurationBuilder SetConfig(this IConfiguration configuration)
         {
             var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
 
