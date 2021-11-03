@@ -6,7 +6,7 @@ namespace Berger.Global.Extensions.Globalization
 {
     public static class CultureExtensions
     {
-        public static void ConfigureCulture(this IServiceCollection services, string name)
+        public static void SetCulture(this IServiceCollection services, string name)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

@@ -1,15 +1,39 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Berger.Global.Extensions.Json
 {
     public static class JsonExtensions
     {
-        private static readonly JsonSerializerOptions _options = new JsonSerializerOptions
+        public static string Serialize<T>(this T obj) => JsonConvert.SerializeObject(obj);
+        public static T Deserialize<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
+        public static void ConfigureLoopHandling()
         {
-            PropertyNameCaseInsensitive = true
-        };
-
-        public static T FromJson<T>(this string json) => JsonSerializer.Deserialize<T>(json, _options);
-        public static string ToJson<T>(this T obj) => JsonSerializer.Serialize<T>(obj, _options);
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+        }
+        public static void ConfigureFormatting(Formatting format)
+        {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = format
+            };
+        }
+        public static void ConfigureDateFormat(string format)
+        {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                DateFormatString = format
+            };
+        }
+        public static void ConfigureContract(string format)
+        {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver()
+            };
+        }
     }
 }

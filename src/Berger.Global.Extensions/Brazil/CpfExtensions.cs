@@ -9,14 +9,16 @@ namespace Berger.Global.Extensions.Brazil
             if (string.IsNullOrEmpty(cpf))
                 return false;
 
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplier_1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplier_2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
-            string tempCpf;
-            string digito;
-            string dgsVerificadores;
-            int soma;
-            int resto;
+            var rest = 0;
+            var total = 0;
+
+            var digit = string.Empty;
+            var temporary = string.Empty;
+            var verifiers = string.Empty;
+            
             cpf = cpf.Trim();
             cpf = cpf.Replace(".", "").Replace("-", "");
 
@@ -39,39 +41,39 @@ namespace Berger.Global.Extensions.Brazil
             if (cpf.Length != 11)
                 return false;
 
-            tempCpf = cpf.Substring(0, 9);
-            soma = 0;
+            temporary = cpf.Substring(0, 9);
+            total = 0;
+
             for (int i = 0; i < 9; i++)
+                total += int.Parse(temporary[i].ToString()) * multiplier_1[i];
 
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
-            resto = soma % 11;
+            rest = total % 11;
 
-            if (resto < 2)
-                resto = 0;
+            if (rest < 2)
+                rest = 0;
             else
-                resto = 11 - resto;
+                rest = 11 - rest;
 
-            digito = resto.ToString();
-            dgsVerificadores = digito;
-            tempCpf = tempCpf + digito;
-            soma = 0;
+            digit = rest.ToString();
+            verifiers = digit;
+            temporary = temporary + digit;
+            total = 0;
 
             for (int i = 0; i < 10; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
+                total += int.Parse(temporary[i].ToString()) * multiplier_2[i];
 
-            resto = soma % 11;
+            rest = total % 11;
 
-            if (resto < 2)
-                resto = 0;
+            if (rest < 2)
+                rest = 0;
             else
-                resto = 11 - resto;
+                rest = 11 - rest;
 
-            digito = resto.ToString();
-            dgsVerificadores += digito;
+            digit = rest.ToString();
+            verifiers += digit;
 
-            if ((dgsVerificadores) == cpf.Remove(0, 9))
+            if ((verifiers) == cpf.Remove(0, 9))
                 return true;
-
             else
                 return false;
         }
