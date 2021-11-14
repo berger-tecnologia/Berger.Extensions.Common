@@ -4,7 +4,7 @@ using Berger.Global.Extensions.Auxiliar;
 
 namespace Berger.Global.Extensions.Pagination
 {
-    public static class PaginationExtensions
+    public static class PaginationExtension
     {
         public static Pagination<T> Paginate<T>(this IQueryable<T> query, int page, int limit) where T : class
         {

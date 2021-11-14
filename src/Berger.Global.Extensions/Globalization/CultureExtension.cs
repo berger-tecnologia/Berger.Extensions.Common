@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Berger.Global.Extensions.Globalization
 {
-    public static class CultureExtensions
+    public static class CultureExtension
     {
         public static void SetCulture(this IServiceCollection services, string name)
         {

@@ -2,7 +2,7 @@
 
 namespace Berger.Global.Extensions.Brazil
 {
-    public static class CpfExtensions
+    public static class CpfExtension
     {
         public static bool CheckCpf(string cpf)
         {

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Berger.Global.Extensions.Config
 {
-    public static class ConfigExtensions
+    public static class ConfigExtension
     {
         public static IConfigurationBuilder SetConfig(this IConfiguration configuration, IHostEnvironment env)
         {

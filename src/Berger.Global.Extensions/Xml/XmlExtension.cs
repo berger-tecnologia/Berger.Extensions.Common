@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace Berger.Global.Extensions.Xml
 {
-    public static class XmlExtensions
+    public static class XmlExtension
     {
         public static DateTime ToDateTime(this XElement e)
         {

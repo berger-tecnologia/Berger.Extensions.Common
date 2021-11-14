@@ -2,7 +2,7 @@
 
 namespace Berger.Global.Extensions.Conversion
 {
-    public static class GuidExtensions
+    public static class GuidExtension
     {
         public static Guid ToGuid(this Guid? source)
         {
