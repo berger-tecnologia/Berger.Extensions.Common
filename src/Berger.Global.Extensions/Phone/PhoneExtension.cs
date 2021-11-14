@@ -2,7 +2,7 @@
 
 namespace Berger.Global.Extensions.Phone
 {
-    public class PhoneExtensions
+    public class PhoneExtension
     {
         public static string GetCountryCode(string code)
         {

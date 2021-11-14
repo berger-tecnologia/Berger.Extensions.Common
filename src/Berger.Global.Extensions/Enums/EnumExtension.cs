@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Berger.Global.Extensions.Enums
 {
-    public static class EnumExtensions
+    public static class EnumExtension
     {
         public static string GetName(this Enum enumerator)
         {

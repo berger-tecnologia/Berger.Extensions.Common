@@ -1,6 +1,6 @@
 ﻿namespace Berger.Global.Extensions.Brazil
 {
-    public static class CnpjExtensions
+    public static class CnpjExtension
     {
         public static bool CheckCnpj(string cnpj)
         {

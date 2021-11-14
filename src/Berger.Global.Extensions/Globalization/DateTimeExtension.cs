@@ -2,7 +2,7 @@
 
 namespace Berger.Global.Extensions.Globalization
 {
-    public static class DateTimeExtensions
+    public static class DateTimeExtension
     {
         public static string ConvertUtc(this DateTime date, string zone = "Pacific Standard Time")
         {

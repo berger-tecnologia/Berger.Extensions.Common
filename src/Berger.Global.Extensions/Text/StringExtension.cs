@@ -2,7 +2,7 @@
 
 namespace Berger.Global.Extensions.Text
 {
-    public static class StringExtensions
+    public static class StringExtension
     {
         public static string RemoveSpecial(this string text)
         {

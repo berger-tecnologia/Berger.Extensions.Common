@@ -3,7 +3,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Berger.Global.Extensions.Json
 {
-    public static class JsonExtensions
+    public static class JsonExtension
     {
         public static string Serialize<T>(this T obj) => JsonConvert.SerializeObject(obj);
         public static T Deserialize<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
