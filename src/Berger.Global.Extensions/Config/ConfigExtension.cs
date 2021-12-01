@@ -5,6 +5,14 @@ namespace Berger.Global.Extensions.Config
 {
     public static class ConfigExtension
     {
+        public static IConfigurationBuilder SetConfig(this IConfiguration configuration)
+        {
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
+
+            builder.AddEnvironmentVariables();
+
+            return builder;
+        }
         public static IConfigurationBuilder SetConfig(this IConfiguration configuration, IHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -17,13 +25,9 @@ namespace Berger.Global.Extensions.Config
             return builder;
         }
 
-        public static IConfigurationBuilder SetConfig(this IConfiguration configuration)
+        public static T Parse<T>(this IConfigurationSection section)
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
-
-            builder.AddEnvironmentVariables();
-
-            return builder;
+            return section.Get<T>();
         }
     }
 }
