@@ -25,9 +25,9 @@ namespace Berger.Global.Extensions.Config
             return builder;
         }
 
-        public static T Parse<T>(this IConfigurationSection section)
+        public static T GetAndParse<T>(this IConfiguration configuration, string key)
         {
-            return section.Get<T>();
+            return configuration.GetSection(key).Get<T>();
         }
     }
 }
