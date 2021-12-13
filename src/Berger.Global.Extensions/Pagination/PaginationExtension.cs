@@ -13,6 +13,7 @@ namespace Berger.Global.Extensions.Pagination
             var pages = (double)records / limit;
             var round = (int)Math.Ceiling(pages);
             var skip = (page - 1) * limit;
+            var results = query.Count() <= limit ? query : query.Skip(skip).Take(limit);
 
             pagination.Page = page;
             pagination.Limit = limit;
@@ -20,7 +21,7 @@ namespace Berger.Global.Extensions.Pagination
             pagination.Previous = (page - 1 == 0) ? 1 : page - 1;
             pagination.Next = (page + 1 == round + 1) ? round : page + 1;
             pagination.Pages = round;
-            pagination.Results = query.Skip(skip).Take(limit).ToList();
+            pagination.Results = results.ToList();
 
             return pagination;
         }
