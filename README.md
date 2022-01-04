@@ -1,1 +1,1 @@
-# brg.common.extensions
+# Berger.Extensions.Common
