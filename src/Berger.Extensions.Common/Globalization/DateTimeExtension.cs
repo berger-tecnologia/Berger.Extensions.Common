@@ -6,16 +6,13 @@ namespace Berger.Extensions.Common.Globalization
     {
         public static string ConvertUtc(this DateTime date, string zone = "Pacific Standard Time")
         {
-            var timeZone = GetTimeZone(zone);
-
-            return date.ConvertUtc(timeZone);
+            return date.ConvertUtc(TimeZoneInfo.FindSystemTimeZoneById(zone));
         }
         public static string ConvertUtc(this DateTime ? date, string zone = "Pacific Standard Time")
         {
             var format = Format(date);
-            var timeZone = GetTimeZone(zone);
 
-            return format.ConvertUtc(timeZone);
+            return format.ConvertUtc(TimeZoneInfo.FindSystemTimeZoneById(zone));
         }
         private static string ConvertUtc(this DateTime date, TimeZoneInfo zone)
         {
@@ -32,10 +29,6 @@ namespace Berger.Extensions.Common.Globalization
                 format = (DateTime)date;
 
             return format;
-        }
-        private static TimeZoneInfo GetTimeZone(string zone)
-        {
-            return TimeZoneInfo.FindSystemTimeZoneById(zone);
         }
     }
 }
