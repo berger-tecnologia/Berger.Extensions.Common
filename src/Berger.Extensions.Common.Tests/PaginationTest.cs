@@ -1,7 +1,7 @@
-﻿using Berger.Extensions.Common.Auxiliar;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using System.Linq;
+using Berger.Extensions.Common.Pagination;
 
 namespace Berger.Extensions.Common.Tests
 {
@@ -16,7 +16,7 @@ namespace Berger.Extensions.Common.Tests
         [Order(0)]
         public void ShouldPaginate()
         {
-            var pagination = new Pagination<string>(StringList, 1, Limit);
+            var pagination = StringList.Paginate(1, Limit);
 
             Assert.IsTrue(pagination.Pages == Pages);
             Assert.IsTrue(pagination.Items.Count == Limit);
@@ -28,7 +28,7 @@ namespace Berger.Extensions.Common.Tests
         [Order(1)]
         public void ShouldHaveNextPage()
         {
-            var pagination = new Pagination<string>(StringList, 1, Limit);
+            var pagination = StringList.Paginate(1, Limit);
 
             Assert.IsTrue(pagination.PageInfo.HasNextPage);
         }
@@ -37,7 +37,7 @@ namespace Berger.Extensions.Common.Tests
         [Order(2)]
         public void ShouldNotHaveNextPage()
         {
-            var pagination = new Pagination<string>(StringList, 5, Limit);
+            var pagination = StringList.Paginate(5, Limit);
 
             Assert.IsTrue(!pagination.PageInfo.HasNextPage);
         }
@@ -46,7 +46,7 @@ namespace Berger.Extensions.Common.Tests
         [Order(3)]
         public void ShouldHavePreviousPage()
         {
-            var pagination = new Pagination<string>(StringList, 2, Limit);
+            var pagination = StringList.Paginate(2, Limit);
 
             Assert.IsTrue(pagination.PageInfo.HasPreviousPage);
         }
@@ -54,7 +54,7 @@ namespace Berger.Extensions.Common.Tests
         [Order(4)]
         public void ShouldNotHavePreviousPage()
         {
-            var pagination = new Pagination<string>(StringList, 1, Limit);
+            var pagination = StringList.Paginate(1, Limit);
 
             Assert.IsTrue(!pagination.PageInfo.HasPreviousPage);
         }
